@@ -14,9 +14,8 @@ public class TrainSeats {
     @Column
     private int numberOfSeats;
 
-    @ManyToOne
-    @JoinColumn(name = "train_id")
-    private Train train;
+    @Column
+    private Long trainId;
 
     @ManyToOne
     @JoinColumn(name = "ticket_type")
@@ -38,12 +37,12 @@ public class TrainSeats {
         this.id = id;
     }
 
-    public Train getTrain() {
-        return train;
+    public Long getTrainId() {
+        return trainId;
     }
 
-    public void setTrain(Train train) {
-        this.train = train;
+    public void setTrainId(Long trainId) {
+        this.trainId = trainId;
     }
 
     public Price getPrice() {

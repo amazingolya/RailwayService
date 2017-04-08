@@ -1,6 +1,7 @@
 package com.tsystems.railwayservice.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -12,8 +13,8 @@ public class Train {
     private Long trainId;
 
     @OneToMany
-    @JoinColumn(name = "number_of_seats")
-    private TrainSeats trainSeats;
+    @JoinColumn(name = "trainId")
+    private List<TrainSeats> trainSeats;
 
     @Column
     private String trainNumber;
@@ -34,11 +35,11 @@ public class Train {
         this.trainNumber = trainNumber;
     }
 
-    public TrainSeats getTrainSeats() {
+    public List<TrainSeats> getTrainSeats() {
         return trainSeats;
     }
 
-    public void setTrainSeats(TrainSeats trainSeats) {
+    public void setTrainSeats(List<TrainSeats> trainSeats) {
         this.trainSeats = trainSeats;
     }
 }
