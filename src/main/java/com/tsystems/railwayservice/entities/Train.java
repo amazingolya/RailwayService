@@ -11,8 +11,9 @@ public class Train {
     @Column
     private Long trainId;
 
-    @Column
-    private int numberOfSeats;
+    @OneToMany
+    @JoinColumn(name = "number_of_seats")
+    private TrainSeats trainSeats;
 
     @Column
     private String trainNumber;
@@ -25,19 +26,19 @@ public class Train {
         this.trainId = id;
     }
 
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
-    }
-
     public String getTrainNumber() {
         return trainNumber;
     }
 
     public void setTrainNumber(String trainNumber) {
         this.trainNumber = trainNumber;
+    }
+
+    public TrainSeats getTrainSeats() {
+        return trainSeats;
+    }
+
+    public void setTrainSeats(TrainSeats trainSeats) {
+        this.trainSeats = trainSeats;
     }
 }
