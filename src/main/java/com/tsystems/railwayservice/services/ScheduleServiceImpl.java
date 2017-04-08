@@ -41,4 +41,5 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         return new Schedule(station, arrivalStations, departureStations);
     }
+
 }

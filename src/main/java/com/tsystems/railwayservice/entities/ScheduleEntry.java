@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Table
 public class ScheduleEntry {
 
+    public static enum Direction {
+        FORWARD, BACKWARD
+    }
+
     @Id
     @GeneratedValue
     @Column
@@ -26,6 +30,17 @@ public class ScheduleEntry {
     // null if start station
     @Column
     private Long arrivalTime;
+
+    @Column
+    private Direction direction;
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
 
     public Long getScheduleId() {
         return scheduleId;
