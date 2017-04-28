@@ -3,7 +3,9 @@ package com.tsystems.railwayservice.repositories;
 import org.springframework.core.GenericTypeResolver;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BaseDaoImpl<Entity> implements BaseDao<Entity> {
 
@@ -13,10 +15,10 @@ public class BaseDaoImpl<Entity> implements BaseDao<Entity> {
     @Override
     @ManyToOne(cascade = CascadeType.ALL)
     @SuppressWarnings("unchecked")
-    public List<Entity> getAll() {
+    public Set<Entity> getAll() {
         Class<Entity> entityClass = getEntityClass();
-        Query query = entityManager.createQuery("select * from" + entityClass.getSimpleName());
-        return (List<Entity>) query.getResultList();
+        Query query = entityManager.createQuery("from " + entityClass.getSimpleName());
+        return new HashSet<>(query.getResultList());
     }
 
     @Override

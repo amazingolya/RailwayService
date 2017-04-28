@@ -20,13 +20,13 @@ import java.util.Map;
 public class TrainSearchServiceImpl implements TrainSearchService {
 
     @Autowired
-    ScheduleDao scheduleDao;
+    private ScheduleDao scheduleDao;
 
     @Autowired
-    TrainDao trainDao;
+    private TrainDao trainDao;
 
     @Autowired
-    StationDao stationDao;
+    private StationDao stationDao;
 
     @Override
     public List<TrainItem> getTrainsByRouteAndTime(long departureStationId, long arrivalStationId, long departureDate, long arrivalDate) {

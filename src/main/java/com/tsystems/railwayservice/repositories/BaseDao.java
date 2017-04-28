@@ -1,12 +1,13 @@
 package com.tsystems.railwayservice.repositories;
 
-import java.util.List;
+
+import java.util.Set;
 
 public interface BaseDao<Entity> {
 
     Entity getById(long id);
 
-    List<Entity> getAll();
+    Set<Entity> getAll();
 
     void update(Entity entity);
 

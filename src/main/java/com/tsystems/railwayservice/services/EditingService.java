@@ -1,7 +1,12 @@
 package com.tsystems.railwayservice.services;
 
 
-public interface EditingService<Entity> {
+import com.tsystems.railwayservice.entities.Station;
+import com.tsystems.railwayservice.entities.Train;
 
-    void add(Entity element);
+public interface EditingService {
+
+    void add(Train train);
+
+    void add(Station station);
 }

@@ -11,4 +11,5 @@ public interface ScheduleDao extends BaseDao<ScheduleEntry> {
 
     List<Map> getScheduleByRouteAndTime(long departureStationId, long arrivalStationId, long departureDate, long arrivalDate);
 
+    ScheduleEntry getByTrainAndStation(long trainId, long departureStationId);
 }

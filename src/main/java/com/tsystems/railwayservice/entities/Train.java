@@ -2,6 +2,7 @@ package com.tsystems.railwayservice.entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -18,6 +19,18 @@ public class Train {
 
     @Column
     private String trainNumber;
+
+    @Column(name = "passenger_id")
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Passenger> passengers;
+
+    public Set<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(Set<Passenger> passengers) {
+        this.passengers = passengers;
+    }
 
     public Long getTrainId() {
         return trainId;

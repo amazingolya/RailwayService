@@ -8,37 +8,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Set;
 
 @Repository
-public class TrainDaoImpl implements TrainDao {
+public class TrainDaoImpl extends BaseDaoImpl<Train> implements TrainDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-
-    @Override
-    public Train getById(long id) {
-        return entityManager.find(Train.class, id);
-    }
-
-    @Override
-    public List<Train> getAll() {
-        return null;
-    }
-
-    @Override
-    public void update(Train train) {
-        entityManager.merge(train);
-    }
-
-    @Override
-    public void add(Train train) {
-        entityManager.persist(train);
-    }
-
-    @Override
-    public void delete(Train train) {
-        entityManager.remove(train);
-    }
 
     @Override
     public Station getArrivalStation(long trainId) {

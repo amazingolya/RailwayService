@@ -1,6 +1,7 @@
 package com.tsystems.railwayservice.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table
@@ -20,6 +21,18 @@ public class Passenger {
     // date of birth in "dd.mm.yyyy" format
     @Column
     private String dateOfBirth;
+
+    @Column(name = "train_id")
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Train> trains;
+
+    public Set<Train> getTrains() {
+        return trains;
+    }
+
+    public void setTrains(Set<Train> trains) {
+        this.trains = trains;
+    }
 
     public Long getPassengerId() {
         return passengerId;

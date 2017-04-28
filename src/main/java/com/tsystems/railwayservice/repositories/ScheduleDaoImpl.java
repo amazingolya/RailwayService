@@ -16,7 +16,7 @@ public class ScheduleDaoImpl extends BaseDaoImpl<ScheduleEntry> implements Sched
     @Override
     public List<ScheduleEntry> getByStation(long stationId) {
         Query query = entityManager
-                .createQuery("SELECT s FROM ScheduleEntry AS s WHERE s.station_id = :stationId")
+                .createQuery("SELECT * FROM ScheduleEntry AS s WHERE s.station_id = :stationId")
                 .setParameter("stationId", stationId);
         List<ScheduleEntry> resultList = query.getResultList();
         return resultList;
@@ -26,7 +26,7 @@ public class ScheduleDaoImpl extends BaseDaoImpl<ScheduleEntry> implements Sched
     public List<Map> getScheduleByRouteAndTime(
             long departureStationId, long arrivalStationId, long departureDate, long arrivalDate) {
         Query query = entityManager
-                .createQuery("FROM (FROM ScheduleEntry WHERE " +
+                .createQuery("SELECT All FROM (SELE CT All FROM ScheduleEntry WHERE " +
                         "departure_time >= :departureDate AND " +
                         "station_id = :departureStationId) AS departure JOIN (FROM ScheduleEntry WHERE " +
                         "arrival_time >= :arrivalDate AND " +
@@ -39,5 +39,17 @@ public class ScheduleDaoImpl extends BaseDaoImpl<ScheduleEntry> implements Sched
 
         return query.getResultList();
     }
+
+    @Override
+    public ScheduleEntry getByTrainAndStation(long trainId, long departureStationId) {
+        Query query = entityManager
+                .createQuery("SELECT * FROM ScheduleEntry AS s WHERE s.station_id = :trainId " +
+                        "AND s.departure_station_id = :departureStationId")
+                .setParameter("trainId", trainId)
+                .setParameter("departureStationId", departureStationId);
+        return (ScheduleEntry) query.getSingleResult();
+    }
+
+
 }
 

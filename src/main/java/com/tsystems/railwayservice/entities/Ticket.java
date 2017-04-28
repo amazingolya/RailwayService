@@ -22,6 +22,18 @@ public class Ticket {
     @JoinColumn(name = "price_id")
     private Price price;
 
+    @ManyToOne
+    @JoinColumn(name = "train_id")
+    private Train train;
+
+    public Train getTrain() {
+        return train;
+    }
+
+    public void setTrain(Train train) {
+        this.train = train;
+    }
+
     public Long getTicketId() {
         return ticketId;
     }

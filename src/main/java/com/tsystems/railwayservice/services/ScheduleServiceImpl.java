@@ -19,13 +19,13 @@ import static java.util.stream.Collectors.toList;
 public class ScheduleServiceImpl implements ScheduleService {
 
     @Autowired
-    ScheduleDao scheduleDao;
+    private ScheduleDao scheduleDao;
 
     @Autowired
-    TrainDao trainDao;
+    private TrainDao trainDao;
 
     @Autowired
-    StationDao stationDao;
+    private StationDao stationDao;
 
     @Override
     public Schedule getScheduleByStation(long stationId) {
